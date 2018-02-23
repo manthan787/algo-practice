@@ -5,8 +5,28 @@ keeping the population in consideration. (More population, higher chances)
 from random import uniform
 
 def generate(countries, populations):
-    total_pop = sum(populations)
-    rnd = uniform(1, total_pop)
+    """
+    Solution Explanation:
+
+    Imagine a horizontal line for the given distribution of country populations.
+    Country Population
+        A     3
+        B     3
+        C     1
+    The length of the line is sum(populations) = 7    
+      A   B  C
+    |###|###|#|
+    1         7
+    Pick a point between [1, 7]. For example, 4
+    Now iterate over all populations and deduct them from
+    the random number (4).
+    When the random number becomes smaller than current population, 
+    return that country.
+
+    In this example, it happens when we deduct population of country A
+    from random number (4 - 3) = 1, so we will return B.
+    """
+    rnd = uniform(1, sum(populations))
 
     for i, population in enumerate(populations):
         if rnd < population:
