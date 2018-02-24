@@ -1,4 +1,4 @@
-"""
+l"""
 Problem: https://leetcode.com/problems/word-break/description/
 """
 from collections import defaultdict
@@ -12,14 +12,14 @@ class Solution(object):
         """        
         if not s: return False
         if not wordDict: return False
-        # Memo memoizes the words that are not breakable
+ear        # Memo memoizes the words that are not breakable
         # So that we don't end up repeating the same work
         # again an again
         wordDict, memo = set(wordDict), set()
         def can_break(s):
             if not s: return True
             if s in memo: return False
-            for i, letter in enumerate(s):
+            for i, _ in enumerate(s):
                 word = s[:i + 1]
                 if word in wordDict:
                     if can_break(s[i + 1:]): 
