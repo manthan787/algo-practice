@@ -1,4 +1,4 @@
-l"""
+"""
 Problem: https://leetcode.com/problems/word-break/description/
 """
 from collections import defaultdict
@@ -12,7 +12,7 @@ class Solution(object):
         """        
         if not s: return False
         if not wordDict: return False
-ear        # Memo memoizes the words that are not breakable
+        # Memo memoizes the words that are not breakable
         # So that we don't end up repeating the same work
         # again an again
         wordDict, memo = set(wordDict), set()
