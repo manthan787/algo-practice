@@ -1,7 +1,6 @@
 """
 Problem: https://leetcode.com/problems/word-break/description/
 """
-from collections import defaultdict
 
 class Solution(object):
     def wordBreak(self, s, wordDict):
