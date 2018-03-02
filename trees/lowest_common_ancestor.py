@@ -9,10 +9,21 @@ class Tree(object):
 class Solution(object):
 
     def lowestCommonAncestor(self, root, p, q):
-        if root in (None, p, q): return root
-        left, right = (self.lowestCommonAncestor(kid, p, q)
-                       for kid in (root.left, root.right))
-        return root if left and right else left or right
+        """ If p and q are in the same subtree, return root
+            of that subtree as the answer
+            If both p and q are not in the subtree, return None
+            If one of p and q is in the subtree, return that Node
+        """
+        if not root:
+            return root
+        if root == p or root == q:
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left and right:
+            return root
+        return left or right
+
 
 n1 = Tree(3)
 n2 = Tree(4)
