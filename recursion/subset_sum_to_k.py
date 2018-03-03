@@ -10,25 +10,28 @@ def find_subset(s, k):
         DP Solution: O(KN)
     """
     subset = []
-    cache = defaultdict(set)  # cache the subsets that can't make certain sums
+    cache = {}  # cache the subsets that can't make certain sums
+    served = [0]
 
-    def helper(s, k):
-        if k in cache and tuple(s) in cache[k]:
+    def helper(s, i, k):
+        if (i, k) in cache:
+            served[0] += 1
             return False
         if k == 0:
             return True
         if k < 0:
             return False
-        if not s:
+        if i >= len(s):
             return False
-        included = helper(s[1:], k - s[0])
-        excluded = helper(s[1:], k)
+        included = helper(s, i + 1, k - s[i])
+        excluded = helper(s, i + 1, k)
         if included:
-            subset.append(s[0])
+            subset.append(s[i])
         else:
-            cache[k].add(tuple(s))
+            cache[(i, k)] = False
         return included or excluded
-    helper(s, k)
+    helper(s, 0, k)
+    print served
     return subset
 
 
