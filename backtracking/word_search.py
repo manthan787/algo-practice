@@ -23,7 +23,7 @@ class Solution(object):
     def search(self, board, i, j, visited, word):
         if board[i][j] != word[0]:
             return False
-        
+
         if len(word[1:]) == 0:
             return True
         # print word, visited, board[i][j], i, j
