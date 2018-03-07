@@ -1,11 +1,12 @@
 class TreeNode(object):
-    def __init__(self, x, left = None, right = None):
+    def __init__(self, x, left=None, right=None):
         self.val = x
         self.left = left
         self.right = right
 
     def __repr__(self):
         return "{}-L:{} R:{}".format(self.val, self.left, self.right)
+
 
 class Codec(object):
 
@@ -44,8 +45,10 @@ class Codec(object):
     def build_tree(self, nodes, pos=-1):
         ''' Builds tree from given pre-order traversal '''
         pos += 1
-        if pos >= len(nodes): return None, pos
-        if nodes[pos] is None: return None, pos
+        if pos >= len(nodes):
+            return None, pos
+        if nodes[pos] is None:
+            return None, pos
         else:
             node = TreeNode(int(nodes[pos]))
             left, pos = self.build_tree(nodes, pos)
@@ -53,6 +56,7 @@ class Codec(object):
             node.left = left
             node.right = right
             return node, pos
+
 
 # test_tree = TreeNode(3, TreeNode(1), TreeNode(-1))
 c = Codec()
