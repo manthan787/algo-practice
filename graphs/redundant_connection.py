@@ -3,6 +3,7 @@ https://leetcode.com/problems/redundant-connection/description/
 '''
 from collections import defaultdict
 
+
 class Solution(object):
     def findRedundantConnection(self, edges):
         """
@@ -29,6 +30,7 @@ class Solution(object):
                 print "Cycle {},{}".format(n, child)
         grey[n] = False
 
+
 s = Solution()
-print s.findRedundantConnection([[1,2], [1,3], [2,3]])
-print s.findRedundantConnection([[1,2], [2,3], [3,4], [1,4], [1,5]])
+print s.findRedundantConnection([[1, 2], [1, 3], [2, 3]])
+print s.findRedundantConnection([[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]])
