@@ -19,6 +19,18 @@ class Solution(object):
         memo[i] = max(nums[i] + self.helper(nums, i + 2, memo), self.helper(nums, i + 1, memo))
         return memo[i]
 
+    def rob_iter(self, nums):
+        if not nums:
+            return 0
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        dp = [0] * n
+        for i in xrange(n - 1, -1, -1):
+            dp[i] = max(nums[i] + (dp[i + 2] if i + 2 < n else 0),
+                        dp[i + 1] if i + 1 < n else 0)
+        return dp[0]
+
 
 s = Solution()
 print s.rob([1, 2, 3, 4])
